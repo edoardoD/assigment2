@@ -3,24 +3,27 @@
 
 #include "PresenceSensor.h"
 
-class Pir: public PresenceSensor {
- 
-public: 
-  Pir(int pin);
-  bool isDetected();
-  void calibrate();
+namespace components
+{
+  class Pir : public PresenceSensor
+  {
 
-  void sync();
-  long getLastSyncTime();
+  public:
+    Pir(int pin);
+    bool isDetected();
+    void calibrate();
 
-protected: 
-  void updateSyncTime(long time);
+    void sync();
+    long getLastSyncTime();
 
-private:
-  long lastTimeSync;
-  int pin;
-  bool detected;
-  
-};
+  protected:
+    void updateSyncTime(long time);
+
+  private:
+    long lastTimeSync;
+    int pin;
+    bool detected;
+  };
+} // namespace co
 
 #endif

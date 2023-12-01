@@ -5,18 +5,21 @@
 #include <arduino.h>
 #include "ServoTimer2.h"
 
-class ServoMotorImpl: public ServoMotor {
+namespace components
+{
+  class ServoMotorImpl : public ServoMotor
+  {
+  public:
+    ServoMotorImpl(int pin);
 
-public:
-  ServoMotorImpl(int pin);
+    void on();
+    void setPosition(int angle);
+    void off();
 
-  void on();
-  void setPosition(int angle);
-  void off();
-    
-private:
-  int pin; 
-  ServoTimer2 motor; 
-};
+  private:
+    int pin;
+    ServoTimer2 motor;
+  };
+} // namespace
 
 #endif

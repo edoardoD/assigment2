@@ -2,6 +2,7 @@
 #define __TEMP_SENSOR_LM35__
 
 #include "TempSensor.h"
+using namespace components;
 
 class TempSensorLM35: public TempSensor {
 public:

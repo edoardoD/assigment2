@@ -1,5 +1,6 @@
 #include "Pir.h"
 #include "Arduino.h"
+using namespace components;
 
 Pir::Pir(int pin){
   this->pin = pin;

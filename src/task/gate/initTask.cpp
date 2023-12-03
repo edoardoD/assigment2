@@ -25,7 +25,6 @@ void InitTask::tick()
         if (gateway->detectedPresence())
         {
             gateway->setLastDetect(millis());
-            gateway->accessLedOn();
         }
         if (gateway->getLastDetect() + T0 < millis() && !gateway->isWashing())
         {
@@ -37,8 +36,6 @@ void InitTask::tick()
         
             gateway->sleepSys();
             state = DETECTING;
-
-        
         break;
     }
 }

@@ -2,7 +2,7 @@
 
 using namespace tasks;
 
-BlinkTask::BlinkTask(Gateway* gateway)
+BlinkTask::BlinkTask(Gateway *gateway)
 {
     this->gateway = gateway;
 }
@@ -10,26 +10,46 @@ BlinkTask::BlinkTask(Gateway* gateway)
 void BlinkTask::init(int period)
 {
     Task::init(period);
-    
-    state = OFF;
+
+    state = DFT;
 }
 /**ad ogni giro il task valuta se deve eseguire il blink o meno
- * 
-*/
+ *
+ */
 void BlinkTask::tick()
 {
-    if (gateway->isAccessing())
+
+    switch (state)
     {
-        switch (state)
+    case DFT:
+        if (gateway->isAccessing())
         {
-        case OFF:
+            state = OFF;
+        }
+       
+        break;
+    case OFF:
+        if (gateway->isAccessing())
+        {
             gateway->accessLedOff();
             state = ON;
-            break;
-        case ON:
+        }
+        else
+        {
+            state = DFT;
+        }
+        
+        break;
+    case ON:
+        if (gateway->isAccessing())
+        {
             gateway->accessLedOn();
             state = OFF;
-            break;
         }
+        else
+        {
+            state = DFT;
+        }
+        break;
     }
 }

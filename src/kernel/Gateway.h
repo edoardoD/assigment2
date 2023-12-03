@@ -15,13 +15,14 @@ namespace kernel
     public:
         Gateway();
         ~Gateway();
+
         bool detectedPresence();
         bool isWashing();
 
         void openGate();
         void closeGate();
 
-        bool isAccessing();
+        
         void accessLedOff();
         void accessLedOn();
 
@@ -35,9 +36,15 @@ namespace kernel
 
         void sleepSys();
 
+        void checkinAllowed();
+        bool isAccessing();
+
     private:
+        unsigned long lastDetect;
+        unsigned long lastWash;
         double carDedected;
         double isWhashing;
+        double accessing;
         Led *accessLight;
         Led *errorLed;
         Led *finishWashLed;

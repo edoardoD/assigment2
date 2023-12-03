@@ -19,7 +19,8 @@ namespace tasks
         enum
         {
             ON,
-            OFF
+            OFF,
+            DFT
         } state;
 
     public:

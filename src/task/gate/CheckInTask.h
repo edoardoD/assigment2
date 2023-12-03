@@ -3,6 +3,7 @@
 
 
 #include "kernel/Task.h"
+#include "kernel/Gateway.h"
 #include "components/proximity/Pir.h"
 
 using namespace kernel;
@@ -13,20 +14,20 @@ namespace tasks
     class CheckInTask : Task
     {
     private:
-        
-        
+        enum
+        {
+            ALLOWED,
+            DENIED
+        } state;
+
+        Gateway* gateway;         
     public:
-        CheckInTask(/* args */);
+        CheckInTask(Gateway *gateway);
         ~CheckInTask();
+        void init(int period);
+        void tick();
     };
     
-    CheckInTask::CheckInTask(/* args */)
-    {
-    }
-    
-    CheckInTask::~CheckInTask()
-    {
-    }
     
 } // namespace 
 

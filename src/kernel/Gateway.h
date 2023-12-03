@@ -22,8 +22,7 @@ namespace kernel
         void openGate();
         void closeGate();
 
-        
-        void accessLedOff();
+                void accessLedOff();
         void accessLedOn();
 
         unsigned long getLastDetect();
@@ -31,11 +30,8 @@ namespace kernel
 
         unsigned long getLastWash();
         void setLastWash(unsigned long lastWash);
-
         bool btnPressed();
-
         void sleepSys();
-
         void checkinAllowed();
         bool isAccessing();
 

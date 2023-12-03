@@ -6,7 +6,7 @@
 #include "components/proximity/Pir.h"
 #include "components/servo/servo_motor.h"
 #include "components/button/Button.h"
-
+#include "components/distance/Sonar.h"
 using namespace components;
 namespace kernel
 {
@@ -22,7 +22,7 @@ namespace kernel
         void openGate();
         void closeGate();
 
-                void accessLedOff();
+        void accessLedOff();
         void accessLedOn();
 
         unsigned long getLastDetect();
@@ -35,9 +35,15 @@ namespace kernel
         void checkinAllowed();
         bool isAccessing();
 
+        bool inWhashingArea();
+        void startWash();
+
+        bool isFishWashing();
+
     private:
         unsigned long lastDetect;
         unsigned long lastWash;
+        unsigned long startWhash;
         double carDedected;
         double isWhashing;
         double accessing;
@@ -47,6 +53,7 @@ namespace kernel
         Pir *pPir;
         ServoMotor *gate;
         Button *btn;
+        Sonar *sonar;
     };
 } // namespace kernel
 

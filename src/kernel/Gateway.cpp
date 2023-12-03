@@ -80,3 +80,19 @@ void Gateway::setLastWash(unsigned long lastWash){
 bool Gateway::btnPressed(){
     return this->btn->isPressed();
 }
+
+
+bool Gateway::inWhashingArea(){
+    return this->sonar->getDistance() < MAX_DISTANCE && this->sonar->getDistance() > MIN_DISTANCE;
+}
+
+void Gateway::startWash(){
+    this->isWhashing = true;
+    this->finishWashLed->switchOn();
+    this->startWhash = millis();
+    
+}
+
+bool Gateway::isFishWashing(){
+    return  millis() - this->startWhash > T3 ? true : false;
+}

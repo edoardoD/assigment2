@@ -13,8 +13,7 @@ namespace task
         {
             ENTERING,
             WASHING,
-            EXITING,
-            DFT
+            EXITING
         } state;
 
     public:
